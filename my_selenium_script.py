@@ -29,17 +29,18 @@ functions = ["(x*x - 16)",
             "3*(x)*(x)+4*(x)-10"]
 
 formWrapper = driver.find_element_by_id("form-wrapper")
-eqHolder = formWrapper.find_element_by_id("eq-holder")
-x0Holder = formWrapper.find_element_by_id("x0-holder")
+theForm = formWrapper.find_element_by_class_name("theForm")
+eqHolder = theForm.find_element_by_id("eq-holder")
+x0Holder = theForm.find_element_by_id("x0-holder")
 
 for function in functions:
     f = eqHolder.find_element_by_name("eq")
     print(function)
     f.send_keys(function)
     x0Str = x0Holder.find_element_by_name("x0")
-    num = random.uniform(-3.0, 3.0)
-    print(round(num,3))
-    num = round(num,3)
+    #num = random.uniform(-3.0, 3.0)
+    #print(round(num,3))
+    num = 0.9 #round(num,3)
     x0Str.send_keys(num) #random.uniform(-3.0, 3.0)
     time.sleep(2)
     driver.find_element_by_name("subBotton").click()
@@ -47,3 +48,4 @@ for function in functions:
     driver.back()
 
 driver.quit()
+
